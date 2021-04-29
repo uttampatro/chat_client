@@ -1,0 +1,125 @@
+.message{
+    display: flex;
+    flex-direction: column;
+    flex: 0.70;
+}
+
+.message_header{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+.message_headerInfo{
+    flex: 1;
+    padding-left: 20px;
+}
+
+.message_headerInfo > h3 {
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.message_headerInfo > p{
+    color: gray;
+}
+
+.message_body{
+    flex: 1;
+    background-color: rgb(243, 240, 240);
+    background-position: center;
+    padding: 30px;
+    overflow: scroll;
+}
+
+.message_reciever{
+    position: relative;
+    font-size: 16px;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    background-color:  rgb(202, 210, 214);
+    margin-bottom: 30px;
+}
+
+.message_chat{
+    position: relative;    /* same as the above classname */
+    font-size: 16px;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    background-color: rgb(97, 132, 245);
+}
+
+.message_timestamp{
+    font-size: xx-small;
+    margin-left: 10px;
+}
+
+.message_name{
+    position: absolute;
+    top: -15px;
+    font-weight: 800;
+    font-size: x-small;
+}
+
+.message_footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:  20px;
+    height: 62px;
+    border-top: 1px solid lightgray;
+}
+
+.message_footer > form {
+    flex: 1;
+    display: flex;
+}
+
+.message_footer > form > input {
+    border: none;
+    flex: 1; 
+    border-radius: 30px;
+    padding: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.message_footer > form > button {
+    /* display: none; */
+    cursor: pointer;
+    background-color: lightgray;
+    border-radius: 20px;
+    margin-left: 15px;
+    color: black;
+}
+
+.message_footer > form > button:hover{
+    background-color: gray;
+}
+
+.message_footer > form > .MuiSvgIcon-root{
+    cursor: pointer;
+    margin: 5px;
+    color: gray;
+}
+
+.message_footer > form > .MuiSvgIcon-root:hover{
+   color: rgb(87, 82, 82);
+}
+
+.message_footer > .MuiSvgIcon-root:hover{
+    color: rgb(87, 82, 82);
+ }
+
+.message_footer > .MuiSvgIcon-root{
+    cursor: pointer;
+    margin: 5px;
+    color: gray;
+}
