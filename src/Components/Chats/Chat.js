@@ -4,7 +4,7 @@ import { IconButton } from "@material-ui/core";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
-import SidebarChat from "../SidebarChat/SidebarChat";
+import Room from "../Rooms/Room";
 
 function Chat() {
   return (
@@ -30,17 +30,15 @@ function Chat() {
       </div>
 
       <div className="chat_sidebar">
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
-        <SidebarChat />
+      <Room />
+      <Room />
+      <Room />
+      <Room />
+      <Room />
+      <Room />
+      <Room />
+      <Room />
+      <Room />
       </div>
     </div>
   );

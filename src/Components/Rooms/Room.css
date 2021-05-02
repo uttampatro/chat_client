@@ -1,19 +1,19 @@
-.sidebarChat{
+.room{
     display: flex;
     padding: 20px;
     cursor: pointer;
     border-bottom: 1px solid #f6f6f6; 
 }
 
-.sidebarChat:hover{
+.room:hover{
     background-color: #ebebeb;
 }
 
-.sidebarChat_info{
+.room_info{
     margin-left: 15px;
 }
 
-.sidebarChat_info > h2{
+.room_info > h2{
     font-size: 16px;
     margin-bottom: 8px;
 }
