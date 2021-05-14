@@ -6,11 +6,11 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import Room from "./Room/Room";
 
-function Chat() {
+function Chat({ user }) {
   return (
     <div className="rooms">
       <div className="rooms_header">
-        <h3>Chats</h3>
+        <h3>{user.data.login}</h3>
 
         <div className="rooms_headerRight">
           <IconButton>

@@ -11,7 +11,7 @@ import io from "socket.io-client";
 const CONNECTION_PORT = "localhost:5000";
 let socket;
 
-function Chat() {
+function Chat({ user }) {
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
@@ -50,7 +50,7 @@ function Chat() {
           Hello how r u ?<span className="chat_timestamp">time: 2:00</span>
         </p>
         <p className="chat_message">
-          <span className="chat_name">Uttam</span>
+          <span className="chat_name">{user.data.login}</span>
           heya I am fine!
           <span className="chat_timestamp">time: 2:00</span>
         </p>
