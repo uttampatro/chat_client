@@ -10,7 +10,7 @@ function Chat({ user }) {
   return (
     <div className="rooms">
       <div className="rooms_header">
-        <h3>{user.data.login}</h3>
+        <h3>{user.login}</h3>
 
         <div className="rooms_headerRight">
           <IconButton>

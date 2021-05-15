@@ -6,41 +6,53 @@ import "./Login.css";
 
 require("dotenv").config();
 
-const GITHUB_CLIENT_ID = process.env.CLIENT_ID;
-const githubRedirectURL = process.env.GITHUB_REDIRECT_URL;
-const path = process.env.PATH;
+
+const gitHubAuthURL = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${githubRedirectURL}?path=${path}&scope=user:email`;
 
 function Login() {
   const [user, setUser] = useState();
 
   useEffect(() => {
     (async function () {
-      try {
-        const usr = await axios.get(`http://localhost:8000/api/me`, {
-          withCredentials: true,
-        });
-
-        setUser(usr);
-      } catch (error) {
-        console.log(error);
-      }
+      // try {
+      //   const res = await axios.get(`http://localhost:5000/api/me`, {
+      //   withCredentials: true,
+      // });
+      // setUser(res.data);
+      // console.log(res, res.data);
+      // } catch (error) {
+      //   console.log(error)
+      // }
     })();
   }, []);
+
+  const handleSignIn = async () => {
+    try {
+      const res = await axios.get(gitHubAuthURL, {
+        headers: { 
+          "Access-Control-Allow-Origin": "*",
+        },
+        withCredentials: true,
+      });
+      setUser(res.data)
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(gitHubAuthURL);
 
   return (
     <div className="login">
       {!user ? (
-        <a
-          href={`https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${githubRedirectURL}?path=${path}&scope=user:email`}
-        >
-          LOGIN WITH GITHUB
-        </a>
+        <button onClick={handleSignIn}>LOGIN WITH GITHUB</button>
       ) : (
-        // JSON.stringify(user)
-        <div className="login_app">
-            <Rooms user={user} />
-            <Chat user={user} />
-        </div>
+        JSON.stringify(user)
+        // <div className="login_app">
+        //     <Rooms user={user} />
+        //     <Chat user={user} />
+        // </div>
       )}
     </div>
   );

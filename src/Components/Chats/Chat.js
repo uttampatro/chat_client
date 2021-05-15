@@ -19,7 +19,6 @@ function Chat({ user }) {
     socket = io(CONNECTION_PORT);
   }, [CONNECTION_PORT]);
 
-
   return (
     <div className="chat">
       <div className="chat_header">
@@ -44,22 +43,21 @@ function Chat({ user }) {
       </div>
 
       <div className="chat_body">
-
         <p className="chat_reciever">
           <span className="chat_name">Patro</span>
           Hello how r u ?<span className="chat_timestamp">time: 2:00</span>
         </p>
         <p className="chat_message">
-          <span className="chat_name">{user.data.login}</span>
+          <span className="chat_name">{user.login}</span>
           heya I am fine!
           <span className="chat_timestamp">time: 2:00</span>
         </p>
       </div>
 
       <div className="chat_footer">
-        <AttachFileIcon />
-
         <form>
+          <AttachFileIcon />
+
           <input
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -67,9 +65,7 @@ function Chat({ user }) {
             placeholder="Type a message"
           />
           <InsertEmoticonIcon />
-          <button type="submit">
-            Send a meassage
-          </button>
+          <button type="submit">Send a meassage</button>
         </form>
       </div>
     </div>
