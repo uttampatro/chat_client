@@ -1,6 +1,6 @@
 import { Avatar } from '@material-ui/core';
 import React from 'react';
-import "./Room.css"
+import './Conversation.css';
 
 function Room() {
     return (
@@ -11,7 +11,7 @@ function Room() {
                 <p>This is the last message</p>
             </div>
         </div>
-    )
+    );
 }
 
 export default Room;
