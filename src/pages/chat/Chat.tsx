@@ -31,9 +31,7 @@ function ChatPage() {
             <ConversationList onClick={fetchChat} user={user} />
 
             <div className="chat">
-                {userChatList.map((userChat: any) => {
-                    return <UserChat key={userChat.id} userChat={userChat} />;
-                })}
+                <UserChat userChatList={userChatList} />
             </div>
         </div>
     );
