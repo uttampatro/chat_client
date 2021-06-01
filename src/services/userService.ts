@@ -3,7 +3,7 @@ import axios from './axios';
 import { SaveUserDTO } from '../pages/login/dtos/saveUser';
 
 export interface IUsersService {
-    saveUser(gitHubAuthURL: string): Promise<any>;
+    login(email: string, password: string): Promise<any>;
     logout(): Promise<void>;
 }
 
@@ -17,22 +17,16 @@ export class UsersService implements IUsersService {
         }
     }
 
-    async saveUser(gitHubAuthURL: string): Promise<any> {
+    async login(email: string, password: string): Promise<any> {
         try {
-            //step1: authenticate with github auth url
-            const authResponse = await axios.get(gitHubAuthURL, {
-                withCredentials: true,
-            });
-            const githubUser: any = authResponse.data;
-
-            //ste2: save response of github user in our db
-            const response = await axios.post('/user', {
-                githubId: githubUser.id,
-                email: githubUser.email,
+            //ste1: save response of github user in our db
+            const response = await axios.post('http://localhost:5000/v1/login', {
+                email,
+                password,
             });
 
-            //step3: save user in localStorage
-            localStorage.setItem('user', JSON.stringify(githubUser));
+            //step2: save user in localStorage
+            localStorage.setItem('user', JSON.stringify(response.data));
 
             return response.data;
         } catch (err) {

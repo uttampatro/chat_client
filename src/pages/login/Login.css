@@ -1,16 +1,56 @@
-
-
-.login{
+.login {
     display: grid;
     place-items: center;
     height: 100vh;
     background-color: #f7f7f7;
-  }
+}
 
 .login_app {
-  display: flex;
-  background-color: #eff0f1;
-  height: 100vh;
-  width: 100vw;
-  /* width: 100%; */
+    display: flex;
+    background-color: #eff0f1;
+    height: 100vh;
+    width: 100vw;
+    /* width: 100%; */
+}
+.login_form {
+    background-color: white;
+    width: 300px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 20px;
+}
+
+.login_form > h3 {
+    display: flex;
+    justify-content: center;
+}
+
+.login_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.login_group > label {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.login_input {
+    height: 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 98%;
+}
+
+.login_button {
+    cursor: pointer;
+    background: lightblue;
+    border-radius: 2px;
+    width: 100%;
+    height: 30px;
+    border: 1px solid;
+    margin-top: 10px;
 }
