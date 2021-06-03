@@ -1,4 +1,5 @@
 import axios from './axios';
+import * as config from './../config/api';
 
 export interface IChatsService {
     getConversationList(): Promise<any[]>;
@@ -9,7 +10,7 @@ export class ChatsService implements IChatsService {
     async getConversationList(): Promise<any> {
         try {
             const response = await axios.get(
-                'http://localhost:5000/v1/conversation' 
+                `${config.apiConfig.baseUrl}/conversation`
             );
             //   console.log(response.data)]
             return response.data;
@@ -20,7 +21,7 @@ export class ChatsService implements IChatsService {
     async getChat(conversationId: number): Promise<any> {
         try {
             const response = await axios.get(
-                `http://localhost:5000/v1/conversation/${conversationId}`
+                `${config.apiConfig.baseUrl}/conversation/${conversationId}`
             );
             return response.data;
         } catch (err) {

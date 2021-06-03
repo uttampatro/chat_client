@@ -1,6 +1,6 @@
 /* eslint-disable */
 import axios from './axios';
-import { SaveUserDTO } from '../pages/login/dtos/saveUser';
+import * as config from './../config/api';
 
 export interface IUsersService {
     login(email: string, password: string): Promise<any>;
@@ -20,14 +20,18 @@ export class UsersService implements IUsersService {
     async login(email: string, password: string): Promise<any> {
         try {
             //ste1: save response of github user in our db
-            const response = await axios.post('http://localhost:5000/v1/login', {
-                email,
-                password,
-            });
+            const response = await axios.post(
+                `${config.apiConfig.baseUrl}/login`,
+                {
+                    email,
+                    password,
+                }
+            );
 
             //step2: save user in localStorage
-            localStorage.setItem('user', JSON.stringify(response.data));
-
+            if (response.data) {
+                localStorage.setItem('user', JSON.stringify(response.data));
+            }
             return response.data;
         } catch (err) {
             console.log(err);

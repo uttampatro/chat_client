@@ -51,7 +51,7 @@ function ConversationList({ user, onClick }: ConversationListProps) {
             </div>
 
             <div className="rooms_sidebar">
-                {conversationList.map((conversation: any) => {
+                {conversationList?.map((conversation: any) => {
                     return (
                         <Conversation
                             onClick={onClick}

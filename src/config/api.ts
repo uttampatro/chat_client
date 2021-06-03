@@ -1,12 +1,13 @@
 const isProduction = process.env.REACT_APP_ENVIRONMENT === 'production';
-const isDevelopment = process.env.REACT_APP_ENVIRONMENT === 'development';
+// const isDevelopment = process.env.REACT_APP_ENVIRONMENT === 'development';
 
 const localApiConfig = {
-    baseUrl: 'http://localhost:5000',
+    baseUrl: 'http://localhost:5000/v1',
 };
 const prodApiConfig = {
-    baseUrl: 'http://localhost:8080', //TODO: put heroku url
+    baseUrl: 'https://chat-serverr.herokuapp.com/v1', //TODO: put heroku url
 };
+console.log(process.env.REACT_APP_ENVIRONMENT);
 
 let apiConfig = localApiConfig;
 if (isProduction) {
@@ -14,4 +15,3 @@ if (isProduction) {
 }
 
 export { apiConfig };
-  

@@ -34,9 +34,10 @@ function UserChat({ userChatList }: UserChatProps) {
             setMessageList([...messageList, data]);
             console.log(data);
         });
-    });
+    }, []);
 
-    const sendMessage = async () => {
+    const sendMessage = async (e: any) => {
+        e.preventDefault();
         const messageContent = {
             content: {
                 user: user.email,

@@ -3,11 +3,6 @@ import userService from '../../services/userService';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
 
-const GITHUB_CLIENT_ID = '';
-const githubRedirectURL = '';
-const path = '';
-const gitHubAuthURL = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${githubRedirectURL}?path=${path}&scope=user:email`;
-
 function LoginPage() {
     const history = useHistory();
     const [email, setEmail] = useState('');
@@ -15,9 +10,13 @@ function LoginPage() {
     const handleSignIn = async e => {
         e.preventDefault();
         try {
-            const res = await userService.login(email, password);
-            history.push('/chat');
-            console.log(res);
+            const user = await userService.login(email, password);
+            if (user) {
+                history.push('/chat');
+            } else {
+                alert('Invalid Credential');
+            }
+            console.log(user);
         } catch (error) {
             console.log(error);
         }
