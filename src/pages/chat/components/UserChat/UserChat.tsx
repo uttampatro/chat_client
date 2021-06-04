@@ -7,12 +7,13 @@ import AttachFileIcon from '@material-ui/icons/AttachFile';
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import { Avatar, IconButton } from '@material-ui/core';
 import io from 'socket.io-client';
+import * as config from './../../../../config/api';
 
 interface UserChatProps {
     userChatList: any[];
 }
 
-const CONNECTION_PORT = 'localhost:5000';
+const CONNECTION_PORT = `${config.apiConfig.baseUrl}`;
 let socket: any;
 
 function UserChat({ userChatList }: UserChatProps) {
