@@ -7,6 +7,7 @@ import SearchOutlined from '@material-ui/icons/SearchOutlined';
 import Conversation from '../conversation/Conversation';
 import chatService from '../../../../services/chatService';
 import { useHistory } from 'react-router';
+import userService from '../../../../services/userService';
 
 interface ConversationListProps {
     user: any;
@@ -26,8 +27,9 @@ function ConversationList({ user, onClick }: ConversationListProps) {
         }
     };
 
-    const logout = () => {
+    const logout = async () => {
         try {
+            await userService.logout()
             history.push('/login');
         } catch (error) {
             console.log(error);
