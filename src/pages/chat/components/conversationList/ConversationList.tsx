@@ -6,6 +6,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchOutlined from '@material-ui/icons/SearchOutlined';
 import Conversation from '../conversation/Conversation';
 import chatService from '../../../../services/chatService';
+import { useHistory } from 'react-router';
 
 interface ConversationListProps {
     user: any;
@@ -14,11 +15,20 @@ interface ConversationListProps {
 
 function ConversationList({ user, onClick }: ConversationListProps) {
     const [conversationList, setConversationList] = useState<any[]>([]);
+    const history = useHistory();
 
     const fetchConversationList = async () => {
         try {
             const data = await chatService.getConversationList();
             setConversationList(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const logout = () => {
+        try {
+            history.push('/login');
         } catch (error) {
             console.log(error);
         }
@@ -31,7 +41,7 @@ function ConversationList({ user, onClick }: ConversationListProps) {
     return (
         <div className="rooms">
             <div className="rooms_header">
-                <h3>Chat</h3>
+                <button onClick={logout}>Logout</button>
 
                 <div className="rooms_headerRight">
                     <IconButton>
