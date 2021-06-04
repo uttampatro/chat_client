@@ -26,13 +26,13 @@ function ConversationList({ user, onClick }: ConversationListProps) {
         }
     };
 
-    const logout = () => {
-        try {
-            history.push('/login');
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const logout = () => {
+    //     try {
+    //         history.push('/login');
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
     useEffect(() => {
         fetchConversationList();
@@ -41,7 +41,7 @@ function ConversationList({ user, onClick }: ConversationListProps) {
     return (
         <div className="rooms">
             <div className="rooms_header">
-                <button onClick={logout}>Logout</button>
+                <button>Logout</button>
 
                 <div className="rooms_headerRight">
                     <IconButton>

@@ -16,7 +16,7 @@ function LoginPage() {
             } else {
                 alert('Invalid Credential');
             }
-            console.log(user);
+            // console.log(user);
         } catch (error) {
             console.log(error);
         }

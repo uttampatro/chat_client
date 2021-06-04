@@ -39,13 +39,11 @@ function UserChat({ userChatList }: UserChatProps) {
     const sendMessage = async (e: any) => {
         e.preventDefault();
         const messageContent = {
-            content: {
-                user: user.email,
-                message: message,
-            },
+            user: user.email,
+            message: message,
         };
         await socket.emit('send_message', messageContent);
-        setMessageList([...messageList, messageContent.content]);
+        setMessageList([...messageList, messageContent]);
         setMessage('');
     };
 
