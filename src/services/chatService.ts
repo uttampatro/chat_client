@@ -10,7 +10,7 @@ export class ChatsService implements IChatsService {
     async getConversationList(): Promise<any> {
         try {
             const response = await axios.get(
-                `${config.apiConfig.baseUrl}/conversation`
+                `${config.apiConfig.baseUrl}/v1/conversation`
             );
             //   console.log(response.data)]
             return response.data;
@@ -21,7 +21,7 @@ export class ChatsService implements IChatsService {
     async getChat(conversationId: number): Promise<any> {
         try {
             const response = await axios.get(
-                `${config.apiConfig.baseUrl}/conversation/${conversationId}`
+                `${config.apiConfig.baseUrl}/v1/conversation/${conversationId}`
             );
             return response.data;
         } catch (err) {
