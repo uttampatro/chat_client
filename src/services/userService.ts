@@ -21,7 +21,7 @@ export class UsersService implements IUsersService {
         try {
             //ste1: save response of github user in our db
             const response = await axios.post(
-                `${config.apiConfig.baseUrl}/login`,
+                `${config.apiConfig.baseUrl}/v1/login`,
                 {
                     email,
                     password,
