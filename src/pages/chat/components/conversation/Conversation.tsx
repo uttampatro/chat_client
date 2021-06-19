@@ -10,7 +10,6 @@ interface ConversationProps {
 function Conversation(props: ConversationProps) {
     const { conversation, onClick } = props;
     const { lastMessage } = conversation;
-    // console.log(conversation);
 
     return (
         <div onClick={() => onClick(conversation.id)} className="conversation">

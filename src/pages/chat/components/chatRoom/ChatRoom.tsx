@@ -1,50 +1,47 @@
 import React, { useEffect, useState } from 'react';
-import './UserChat.css';
+import './ChatRoom.css';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SearchOutlined from '@material-ui/icons/SearchOutlined';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import { Avatar, IconButton } from '@material-ui/core';
-import io from 'socket.io-client';
-import * as config from '../../../../config/api';
+import { IMessage, IUser } from '../../Chat';
+import { Socket } from 'socket.io-client';
 
 interface UserChatProps {
-    userChatList: any[];
+    messageList: IMessage[];
+    conversationId: string;
+    addNewMessage: (message: IMessage) => void;
+    socket: Socket;
 }
 
-const CONNECTION_PORT = `${config.apiConfig.baseUrl}`;
-let socket: any;
-
-function UserChat({ userChatList }: UserChatProps) {
+function ChatRoom({
+    messageList,
+    addNewMessage,
+    conversationId,
+    socket,
+}: UserChatProps) {
     const [message, setMessage] = useState('');
     const userString = localStorage.getItem('user');
-    const user = userString ? JSON.parse(userString) : undefined;
-    console.log(user);
-    // const user = JSON.parse(userString!);
-    console.log(userChatList);
-
-    const [messageList, setMessageList] = useState(userChatList);
+    const user: IUser = userString ? JSON.parse(userString) : undefined;
 
     useEffect(() => {
-        socket = io(CONNECTION_PORT);
-    }, [CONNECTION_PORT]);
-
-    useEffect(() => {
-        socket.on('receive_message', (data: any) => {
-            setMessageList([...messageList, data]);
-            // console.log(data);
+        socket?.on('receive_message', (message: IMessage) => {
+            addNewMessage(message);
         });
-    }, []);
+    }, [messageList, socket]);
 
     const sendMessage = async (e: any) => {
         e.preventDefault();
-        const messageContent = {
-            user: user.email,
-            message: message,
+        const newMessage: IMessage = {
+            content: message,
+            conversationId: conversationId,
+            createdAt: new Date().toISOString(),
+            user: user,
         };
-        await socket.emit('send_message', messageContent);
-        setMessageList([...messageList, messageContent]);
+        socket.emit('new_message', newMessage);
+        addNewMessage(newMessage);
         setMessage('');
     };
 
@@ -54,7 +51,7 @@ function UserChat({ userChatList }: UserChatProps) {
                 <Avatar />
 
                 <div className="userChat_headerInfo">
-                    {/* <h3>{userChat.user.email}</h3> */}
+                    {/* <h3>{}</h3> */}
                     <p>Last seen at...</p>
                 </div>
 
@@ -71,28 +68,28 @@ function UserChat({ userChatList }: UserChatProps) {
                 </div>
             </div>
             <div className="userChat_body">
-                {userChatList.map(userChat => {
-                    if (!userChat) return <></>;
+                {messageList.map((message: IMessage) => {
+                    if (!message) return <></>;
                     return (
                         <>
-                            {userChat.user?.email !== user.email ? (
+                            {message.user?.email !== user.email ? (
                                 <p className="userChat_reciever">
                                     <span className="userChat_name">
-                                        {userChat.user?.email}
+                                        {message.user?.email}
                                     </span>
-                                    {userChat.content}
+                                    {message.content}
                                     <span className="userChat_timestamp">
-                                        {userChat.createdAt}
+                                        {message.createdAt}
                                     </span>
                                 </p>
                             ) : (
                                 <p className="userChat_message">
                                     <span className="userChat_name">
-                                        {userChat.user?.email}
+                                        {message.user?.email}
                                     </span>
-                                    {userChat.content}
+                                    {message.content}
                                     <span className="userChat_timestamp">
-                                        {userChat.createdAt}
+                                        {message.createdAt}
                                     </span>
                                 </p>
                             )}
@@ -121,4 +118,4 @@ function UserChat({ userChatList }: UserChatProps) {
     );
 }
 
-export default UserChat;
+export default ChatRoom;

@@ -5,7 +5,7 @@ const localApiConfig = {
     baseUrl: 'http://localhost:5000',
 };
 const prodApiConfig = {
-    baseUrl: 'https://chat-serverr.herokuapp.com', //TODO: put heroku url
+    baseUrl: 'https://chat-serverr.herokuapp.com', 
 };
 console.log(process.env.REACT_APP_ENVIRONMENT);
 
