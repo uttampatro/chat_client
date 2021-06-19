@@ -7,8 +7,7 @@ import AttachFileIcon from '@material-ui/icons/AttachFile';
 import CallOutlinedIcon from '@material-ui/icons/CallOutlined';
 import { Avatar, IconButton } from '@material-ui/core';
 import io from 'socket.io-client';
-import * as config from './../../../../config/api';
-
+import * as config from '../../../../config/api';
 
 interface UserChatProps {
     userChatList: any[];
@@ -25,7 +24,7 @@ function UserChat({ userChatList }: UserChatProps) {
     // const user = JSON.parse(userString!);
     console.log(userChatList);
 
-    const [messageList, setMessageList] = useState<any[]>([]);
+    const [messageList, setMessageList] = useState(userChatList);
 
     useEffect(() => {
         socket = io(CONNECTION_PORT);
@@ -34,7 +33,7 @@ function UserChat({ userChatList }: UserChatProps) {
     useEffect(() => {
         socket.on('receive_message', (data: any) => {
             setMessageList([...messageList, data]);
-            console.log(data);
+            // console.log(data);
         });
     }, []);
 

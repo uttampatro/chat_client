@@ -17,7 +17,7 @@ function Conversation(props: ConversationProps) {
             <Avatar />
             <div className="conversation_info">
                 <h2>user</h2>
-                <p>{lastMessage.content}</p>
+                <p>{lastMessage?.content}</p>
             </div>
         </div>
     );

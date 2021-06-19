@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Chat.css';
 import ConversationList from './components/conversationList/ConversationList';
-import UserChat from './components/UserChat/UserChat';
+import UserChat from './components/userChat/UserChat';
 import chatService from '../../services/chatService';
 
 function ChatPage() {

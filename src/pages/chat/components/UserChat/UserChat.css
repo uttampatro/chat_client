@@ -32,7 +32,7 @@
     background-color: rgb(243, 240, 240);
     background-position: center;
     padding: 30px;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .userChat_reciever {
