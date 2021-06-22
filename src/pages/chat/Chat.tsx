@@ -50,7 +50,7 @@ function ChatPage() {
                 })
             );
             setSelectedConversationId(conversationId);
-            socket.emit('join_room', conversationId)
+            socket.emit('join_room', conversationId);
         } catch (error) {
             console.log(error);
         }

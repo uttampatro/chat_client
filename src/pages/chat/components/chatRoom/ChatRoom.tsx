@@ -51,8 +51,8 @@ function ChatRoom({
                 <Avatar />
 
                 <div className="userChat_headerInfo">
-                    {/* <h3>{}</h3> */}
-                    <p>Last seen at...</p>
+                    <h3>User</h3>
+                    {/* <p>Last seen at...</p> */}
                 </div>
 
                 <div className="userChat_headerRight">

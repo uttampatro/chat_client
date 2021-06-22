@@ -10,7 +10,6 @@ export interface IUsersService {
 export class UsersService implements IUsersService {
     public async logout(): Promise<void> {
         try {
-            // TODO: put axios calls here
             localStorage.clear();
         } catch (err) {
             console.log(err);

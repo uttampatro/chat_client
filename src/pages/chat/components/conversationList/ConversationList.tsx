@@ -29,7 +29,7 @@ function ConversationList({ user, onClick }: ConversationListProps) {
 
     const logout = async () => {
         try {
-            await userService.logout()
+            await userService.logout();
             history.push('/login');
         } catch (error) {
             console.log(error);

@@ -13,7 +13,6 @@ export class ChatsService implements IChatsService {
             const response = await axios.get(
                 `${config.apiConfig.baseUrl}/v1/conversation`
             );
-            //   console.log(response.data)]
             return response.data;
         } catch (err) {
             console.log(err);

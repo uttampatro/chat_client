@@ -15,7 +15,7 @@ function Conversation(props: ConversationProps) {
         <div onClick={() => onClick(conversation.id)} className="conversation">
             <Avatar />
             <div className="conversation_info">
-                <h2>user</h2>
+                <h2>User</h2>
                 <p>{lastMessage?.content}</p>
             </div>
         </div>
