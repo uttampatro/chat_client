@@ -13,14 +13,13 @@ This application built using ReactJS, Node.js, Express, Socket.io, TypeORM.
 Make sure you have Node.js and npm install.
 
   1. Clone or Download the repository 
-
     <pre>git clone https://github.com/uttampatro/chat_client.git
     $ cd chat_client</pre>
   2. Install Dependencies
 
       <pre>npm install</pre>
   3. Start the Application
-  
+
      <pre>npm start</pre>
   Application runs from localhost:3000.
 
