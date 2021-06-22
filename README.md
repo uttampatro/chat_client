@@ -20,6 +20,6 @@ Make sure you have Node.js and npm install.
       <pre>npm install</pre>
   3. Start the Application
 
-     <pre>npm start</pre>
+     <pre>npm run start:prod</pre>
   Application runs from localhost:3000.
 
